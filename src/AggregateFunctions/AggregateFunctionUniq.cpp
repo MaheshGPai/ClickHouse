@@ -176,6 +176,8 @@ void registerAggregateFunctionsUniq(AggregateFunctionFactory & factory)
 #if USE_DATASKETCHES
     factory.registerFunction("uniqTheta",
         {createAggregateFunctionUniq<AggregateFunctionUniqThetaData, AggregateFunctionUniqThetaDataForVariadic>, properties});
+    factory.registerFunction("uniqHLL",
+        {createAggregateFunctionUniq<AggregateFunctionUniqHLLData, AggregateFunctionUniqHLLDataForVariadic>, properties});
 #endif
 
 }
