@@ -42,6 +42,16 @@ public:
         getTDigest()->update(value);
     }
 
+    std::map<Float64, Int64> getCentroids()
+    {
+        std::map<Float64, Int64> centroids;
+        for (const auto&& centroid : *tdigest)
+        {
+            centroids[centroid.first] = centroid.second;
+        }
+        return centroids;
+    }
+
     String serializedData()
     {
         if (!tdigest)

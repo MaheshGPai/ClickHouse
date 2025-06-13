@@ -4,17 +4,20 @@
 #include <DataTypes/DataTypeDate.h>
 #include <DataTypes/DataTypeDate32.h>
 #include <DataTypes/DataTypeDateTime.h>
+#include <DataTypes/DataTypeIPv4andIPv6.h>
+#include <DataTypes/DataTypeMap.h>
 #include <DataTypes/DataTypeTuple.h>
 #include <DataTypes/DataTypeUUID.h>
-#include <DataTypes/DataTypeIPv4andIPv6.h>
 #include <IO/ReadHelpers.h>
 #include <IO/WriteHelpers.h>
+#include <DataTypes/IDataType.h>
 
 #include <AggregateFunctions/IAggregateFunction.h>
 #include <AggregateFunctions/TDigestSketchData.h>
 #include <Columns/ColumnString.h>
+#include <Columns/ColumnMap.h>
 
-#if USE_DATASKETCHES
+#ifdef USE_DATASKETCHES
 
 namespace DB
 {
@@ -42,7 +45,10 @@ public:
 
     String getName() const override { return "serializedTDigest"; }
 
-    static DataTypePtr createResultType() { return std::make_shared<DataTypeString>(); }
+    static DataTypePtr createResultType()
+    {
+        return std::make_shared<DataTypeMap>(std::make_shared<DataTypeNumber<Float64>>(), std::make_shared<DataTypeNumber<Int64>>());
+    }
 
     bool allocatesMemoryInArena() const override { return false; }
 
@@ -67,14 +73,15 @@ public:
         this->data(place).read(buf);
     }
 
-    void insertResultInto(AggregateDataPtr __restrict place, IColumn & to, Arena *) const override
+    void insertResultInto(AggregateDataPtr __restrict , IColumn & , Arena *) const override
     {
-        auto serialized_data = this->data(place).serializedData();
-        assert_cast<ColumnString &>(to).insertData(serialized_data.c_str(), serialized_data.size());
+        // auto centroids = this->data(place).getCentroids();
+        // assert_cast<ColumnMap &>(to).insertData(centroids);
     }
 };
 
-AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
+template <typename T>
+static AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
     const String & name,
     const DataTypes & argument_types,
     const Array & params,
@@ -90,8 +97,8 @@ AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
 
     WhichDataType which(*data_type);
     if (which.isNumber())
-        return AggregateFunctionPtr(createWithNumericType<AggregationFunctionSerializedTDigest>(
-            *data_type, argument_types, params));
+        return AggregateFunctionPtr(createWithNumericType<AggregationFunctionSerializedTDigest<TDigestSketchData<T>>>(*data_type, argument_types, params));
+
     throw Exception(
         ErrorCodes::ILLEGAL_TYPE_OF_ARGUMENT, "Illegal type {} of argument for aggregate function {}", argument_types[0]->getName(), name);
 }
@@ -99,9 +106,7 @@ AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
 }
 void registerAggregateFunctionSerializedTDigest(AggregateFunctionFactory & factory)
 {
-    AggregateFunctionProperties properties = { .returns_default_when_only_null = true, .is_order_dependent = true };
-
-    factory.registerFunction("serializedTDigest", {createAggregateFunctionSerializedTDigest, properties});
+    factory.registerFunction("serializedTDigest", createAggregateFunctionSerializedTDigest);
 }
 
 }
