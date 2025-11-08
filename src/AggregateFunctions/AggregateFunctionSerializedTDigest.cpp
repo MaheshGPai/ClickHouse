@@ -8,6 +8,7 @@
 #include <DataTypes/DataTypeMap.h>
 #include <DataTypes/DataTypeTuple.h>
 #include <DataTypes/DataTypeUUID.h>
+#include <DataTypes/DataTypesNumber.h>
 #include <IO/ReadHelpers.h>
 #include <IO/WriteHelpers.h>
 #include <DataTypes/IDataType.h>
@@ -73,14 +74,24 @@ public:
         this->data(place).read(buf);
     }
 
-    void insertResultInto(AggregateDataPtr __restrict , IColumn & , Arena *) const override
+    void insertResultInto(AggregateDataPtr __restrict place, IColumn & to, Arena *) const override
     {
-        // auto centroids = this->data(place).getCentroids();
-        // assert_cast<ColumnMap &>(to).insertData(centroids);
+        auto centroids = this->data(place).getCentroids();
+        
+        // Create a Map field which is a vector of (key, value) tuples
+        Map map_field;
+        for (const auto & [key, value] : centroids)
+        {
+            Tuple tuple;
+            tuple.push_back(Field(key));
+            tuple.push_back(Field(value));
+            map_field.push_back(Field(tuple));
+        }
+        
+        assert_cast<ColumnMap &>(to).insert(map_field);
     }
 };
 
-template <typename T>
 static AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
     const String & name,
     const DataTypes & argument_types,
@@ -97,7 +108,7 @@ static AggregateFunctionPtr createAggregateFunctionSerializedTDigest(
 
     WhichDataType which(*data_type);
     if (which.isNumber())
-        return AggregateFunctionPtr(createWithNumericType<AggregationFunctionSerializedTDigest<TDigestSketchData<T>>>(*data_type, argument_types, params));
+        return AggregateFunctionPtr(createWithNumericType<AggregationFunctionSerializedTDigest>(*data_type, argument_types, params));
 
     throw Exception(
         ErrorCodes::ILLEGAL_TYPE_OF_ARGUMENT, "Illegal type {} of argument for aggregate function {}", argument_types[0]->getName(), name);

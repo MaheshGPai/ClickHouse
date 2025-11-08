@@ -45,9 +45,9 @@ public:
     std::map<Float64, Int64> getCentroids()
     {
         std::map<Float64, Int64> centroids;
-        for (const auto&& centroid : *tdigest)
+        for (const auto& centroid : tdigest->get_centroids())
         {
-            centroids[centroid.first] = centroid.second;
+            centroids[centroid.get_mean()] = centroid.get_weight();
         }
         return centroids;
     }
@@ -62,10 +62,10 @@ public:
         std::stringstream ss;
         ss << "{";
         bool first = true;
-        for (const auto&& centroid : *tdigest)
+        for (const auto& centroid : tdigest->get_centroids())
         {
-            double mean = centroid.first;
-            long long weight = centroid.second;
+            double mean = centroid.get_mean();
+            long long weight = centroid.get_weight();
             if (!first) {
                 ss << ",";
             } else {
@@ -113,3 +113,4 @@ public:
 }
 
 #endif
+
