@@ -1646,6 +1646,7 @@ cctz
 ceil
 centroid
 centroids
+centroidsFromTDigest
 certificateFile
 cetera
 cfg
@@ -2469,8 +2470,9 @@ mergeTreeIndex
 mergeTreePartInfo
 mergeTreeProjection
 mergeable
-mergeSerializedDoubleSketch
 mergeSerializedHLL
+mergeSerializedQuantiles
+mergeSerializedTDigest
 mergetree
 messageID
 metacharacters
@@ -2710,7 +2712,8 @@ pclmulqdq
 pcre
 perf
 performant
-percentileFromDoubleSketch
+percentileFromQuantiles
+percentileFromTDigest
 perimeterCartesian
 perimeterSpherical
 perkey
@@ -3029,8 +3032,8 @@ sequenceNextNode
 seriesDecomposeSTL
 seriesOutliersDetectTukey
 seriesPeriodDetectFFT
-serializedDoubleSketch
 serializedHLL
+serializedQuantiles
 serializedTDigest
 serverTimeZone
 serverTimezone
