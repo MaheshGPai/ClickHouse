@@ -1,5 +1,5 @@
 ---
-description: 'Creates a TDigest sketch and returns centroids as a Map for percentile estimation'
+description: 'Creates a TDigest sketch and returns centroids as a JSON string for percentile estimation'
 slug: /sql-reference/aggregate-functions/reference/serializedTDigest
 title: 'serializedTDigest'
 doc_type: 'reference'
@@ -7,7 +7,7 @@ doc_type: 'reference'
 
 # serializedTDigest
 
-Creates a TDigest sketch from numeric values and returns the centroids as a Map. TDigest is an algorithm for accurate estimation of percentiles, particularly at the extremes (p99, p99.9, etc.).
+Creates a TDigest sketch from numeric values and returns the centroids as a JSON string. TDigest is an algorithm for accurate estimation of percentiles, particularly at the extremes (p99, p99.9, etc.).
 
 ## Syntax
 
@@ -21,7 +21,7 @@ serializedTDigest(expression)
 
 ## Returned Value
 
-- Map of centroids where keys are Float64 (centroid means) and values are Int64 (centroid weights). Type: [Map(Float64, Int64)](/docs/en/sql-reference/data-types/map.md).
+- JSON string representing centroids where keys are centroid means and values are centroid weights. Type: [String](/docs/en/sql-reference/data-types/string.md).
 
 ## Examples
 
