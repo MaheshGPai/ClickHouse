@@ -40,13 +40,6 @@ public:
         , type(type_)
     {}
 
-    AggregationFunctionMergeSerializedHLL()
-        : IAggregateFunctionDataHelper<HLLSketchData<T>, AggregationFunctionMergeSerializedHLL<T>>{}
-        , base64_encoded(false)
-        , lg_k(DEFAULT_LG_K)
-        , type(DEFAULT_HLL_TYPE)
-    {}
-
     String getName() const override { return "mergeSerializedHLL"; }
 
     static DataTypePtr createResultType() { return std::make_shared<DataTypeString>(); }

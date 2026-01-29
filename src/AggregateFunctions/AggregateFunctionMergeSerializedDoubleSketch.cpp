@@ -35,11 +35,6 @@ public:
         , base64_encoded(base64_encoded_)
     {}
 
-    AggregationFunctionMergeSerializedDoubleSketch()
-        : IAggregateFunctionDataHelper<DoubleSketchData<T>, AggregationFunctionMergeSerializedDoubleSketch<T>>{}
-        , base64_encoded(false)
-    {}
-
     String getName() const override { return "mergeSerializedDoubleSketch"; }
 
     static DataTypePtr createResultType() { return std::make_shared<DataTypeString>(); }

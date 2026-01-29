@@ -43,12 +43,6 @@ public:
         , type(type_)
     {}
 
-    AggregationFunctionSerializedHLL()
-        : IAggregateFunctionDataHelper<HLLSketchData<T>, AggregationFunctionSerializedHLL<T>>{}
-        , lg_k(DEFAULT_LG_K)
-        , type(DEFAULT_HLL_TYPE)
-    {}
-
     String getName() const override { return "serializedHLL"; }
 
     static DataTypePtr createResultType() { return std::make_shared<DataTypeString>(); }

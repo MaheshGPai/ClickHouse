@@ -36,10 +36,6 @@ public:
         : IAggregateFunctionDataHelper<DoubleSketchData<T>, AggregationFunctionSerializedDoubleSketch<T>>{arguments, params, createResultType()}
     {}
 
-    AggregationFunctionSerializedDoubleSketch()
-        : IAggregateFunctionDataHelper<DoubleSketchData<T>, AggregationFunctionSerializedDoubleSketch<T>>{}
-    {}
-
     String getName() const override { return "serializedDoubleSketch"; }
 
     static DataTypePtr createResultType() { return std::make_shared<DataTypeString>(); }
