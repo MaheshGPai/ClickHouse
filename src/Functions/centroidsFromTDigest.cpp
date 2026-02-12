@@ -84,18 +84,19 @@ public:
                     WriteBufferFromOwnString buf;
                     writeChar('{', buf);
                     bool first = true;
-                    for (const auto& centroid : sketch.get_centroids())
+                    for (datasketches::tdigest<double>::const_iterator it = sketch.begin(); it != sketch.end(); ++it)
                     {
+                        const auto & [mean, weight] = *it;
                         if (!first)
                             writeChar(',', buf);
                         else
                             first = false;
 
                         writeChar('"', buf);
-                        writeText(centroid.get_mean(), buf);
+                        writeText(mean, buf);
                         writeChar('"', buf);
                         writeChar(':', buf);
-                        writeText(static_cast<Int64>(centroid.get_weight()), buf);
+                        writeText(static_cast<Int64>(weight), buf);
                     }
                     writeChar('}', buf);
                     result = buf.str();
@@ -119,7 +120,7 @@ REGISTER_FUNCTION(CentroidsFromTDigest)
         .description = R"(
 Extracts centroids from a serialized TDigest sketch.
 
-Returns a Map<Float64, Int64> where keys are centroid means and values are weights.
+Returns a Map(Float64, Int64) where keys are centroid means and values are weights.
 )",
         .examples{{"centroidsFromTDigest", "SELECT centroidsFromTDigest(serializedTDigest(value)) FROM table", ""}},
         .introduced_in = {26, 1},
