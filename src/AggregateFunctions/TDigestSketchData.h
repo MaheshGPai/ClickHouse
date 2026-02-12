@@ -45,13 +45,10 @@ public:
         getTDigest()->merge(sk);
     }
 
-    std::vector<uint8_t> getSerializedData()
+    typename datasketches::tdigest<double>::vector_bytes getSerializedData()
     {
         if (!tdigest)
-        {
-            std::vector<uint8_t> empty;
-            return empty;
-        }
+            return {};
         tdigest->compress();
         auto bytes = tdigest->serialize();
         return bytes;
