@@ -70,8 +70,8 @@ FROM merged;
 
 ## See Also {#see-also}
 
-- [mergeSerializedTDigest](../../../sql-reference/aggregate-functions/reference/mergeserializedtdigest) — Merge TDigest sketches
+- [mergeSerializedTDigest](../../../sql-reference/aggregate-functions/reference/mergeSerializedTDigest) — Merge TDigest sketches
 - [percentileFromTDigest](../../../sql-reference/functions/percentilefromtdigest) — Extract percentile from TDigest
 - [centroidsFromTDigest](../../../sql-reference/functions/centroidsfromtdigest) — Extract centroids from TDigest
 - [quantileTDigest](../../../sql-reference/aggregate-functions/reference/quantiletdigest) — Native ClickHouse TDigest percentile
-- [serializedQuantiles](../../../sql-reference/aggregate-functions/reference/serializedquantiles) — Alternative quantiles algorithm
+- [serializedQuantiles](../../../sql-reference/aggregate-functions/reference/serializedQuantiles) — Alternative quantiles algorithm

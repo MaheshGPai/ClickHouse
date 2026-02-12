@@ -96,6 +96,6 @@ WHERE source = 'partner_api';
 
 ## See Also {#see-also}
 
-- [serializedQuantiles](../../../sql-reference/aggregate-functions/reference/serializedquantiles) — Create Quantiles sketch
+- [serializedQuantiles](../../../sql-reference/aggregate-functions/reference/serializedQuantiles) — Create Quantiles sketch
 - [percentileFromQuantiles](../../../sql-reference/functions/percentilefromquantiles) — Extract percentile from sketch
-- [mergeSerializedHLL](../../../sql-reference/aggregate-functions/reference/mergeserializedhll) — Similar pattern for cardinality sketches
+- [mergeSerializedHLL](../../../sql-reference/aggregate-functions/reference/mergeSerializedHLL) — Similar pattern for cardinality sketches

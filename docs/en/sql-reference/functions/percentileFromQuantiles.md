@@ -1,5 +1,6 @@
 ---
 description: 'Extracts a percentile value from a serialized Quantiles sketch'
+doc_type: 'reference'
 slug: /sql-reference/functions/percentilefromquantiles
 title: 'percentileFromQuantiles'
 ---
@@ -106,7 +107,7 @@ SELECT
 
 ## See Also
 
-- [serializedQuantiles](../../sql-reference/aggregate-functions/reference/serializedquantiles) — Create Quantiles sketch
-- [mergeSerializedQuantiles](../../sql-reference/aggregate-functions/reference/mergeserializedquantiles) — Merge Quantiles sketches
+- [serializedQuantiles](../../sql-reference/aggregate-functions/reference/serializedQuantiles) — Create Quantiles sketch
+- [mergeSerializedQuantiles](../../sql-reference/aggregate-functions/reference/mergeSerializedQuantiles) — Merge Quantiles sketches
 - [percentileFromTDigest](../../sql-reference/functions/percentilefromtdigest) — Alternative for TDigest sketches
 - [quantile](../../sql-reference/aggregate-functions/reference/quantile) — Native ClickHouse percentile function

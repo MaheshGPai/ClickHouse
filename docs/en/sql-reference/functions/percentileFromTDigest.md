@@ -1,5 +1,6 @@
 ---
 description: 'Extracts a percentile value from a serialized TDigest sketch'
+doc_type: 'reference'
 slug: /sql-reference/functions/percentilefromtdigest
 title: 'percentileFromTDigest'
 ---
@@ -110,7 +111,7 @@ Use Quantiles sketches instead when:
 
 ## See Also
 
-- [serializedTDigest](../../sql-reference/aggregate-functions/reference/serializedtdigest) — Create TDigest sketch
-- [mergeSerializedTDigest](../../sql-reference/aggregate-functions/reference/mergeserializedtdigest) — Merge TDigest sketches
+- [serializedTDigest](../../sql-reference/aggregate-functions/reference/serializedTDigest) — Create TDigest sketch
+- [mergeSerializedTDigest](../../sql-reference/aggregate-functions/reference/mergeSerializedTDigest) — Merge TDigest sketches
 - [centroidsFromTDigest](../../sql-reference/functions/centroidsfromtdigest) — Extract centroids from TDigest
 - [percentileFromQuantiles](../../sql-reference/functions/percentilefromquantiles) — Alternative using Quantiles sketches

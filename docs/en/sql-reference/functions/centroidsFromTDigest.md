@@ -1,5 +1,6 @@
 ---
 description: 'Extracts centroids (mean and weight pairs) from a serialized TDigest sketch'
+doc_type: 'reference'
 slug: /sql-reference/functions/centroidsfromtdigest
 title: 'centroidsFromTDigest'
 ---
@@ -85,6 +86,6 @@ For most use cases, use `percentileFromTDigest` instead of extracting centroids 
 
 ## See Also
 
-- [serializedTDigest](../../sql-reference/aggregate-functions/reference/serializedtdigest) — Create TDigest sketch
+- [serializedTDigest](../../sql-reference/aggregate-functions/reference/serializedTDigest) — Create TDigest sketch
 - [percentileFromTDigest](../../sql-reference/functions/percentilefromtdigest) — Extract percentile from TDigest
-- [mergeSerializedTDigest](../../sql-reference/aggregate-functions/reference/mergeserializedtdigest) — Merge TDigest sketches
+- [mergeSerializedTDigest](../../sql-reference/aggregate-functions/reference/mergeSerializedTDigest) — Merge TDigest sketches

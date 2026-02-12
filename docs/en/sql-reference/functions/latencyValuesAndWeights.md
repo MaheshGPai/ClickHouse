@@ -1,5 +1,6 @@
 ---
 description: 'Extracts values and weights from a serialized Quantiles sketch as JSON'
+doc_type: 'reference'
 slug: /sql-reference/functions/latencyvaluesandweights
 title: 'latencyValuesAndWeights'
 ---
@@ -89,6 +90,6 @@ For standard percentile queries, use `percentileFromQuantiles` instead.
 
 ## See Also
 
-- [serializedQuantiles](../../sql-reference/aggregate-functions/reference/serializedquantiles) — Create Quantiles sketch
+- [serializedQuantiles](../../sql-reference/aggregate-functions/reference/serializedQuantiles) — Create Quantiles sketch
 - [percentileFromQuantiles](../../sql-reference/functions/percentilefromquantiles) — Extract percentile from sketch
-- [mergeSerializedQuantiles](../../sql-reference/aggregate-functions/reference/mergeserializedquantiles) — Merge Quantiles sketches
+- [mergeSerializedQuantiles](../../sql-reference/aggregate-functions/reference/mergeSerializedQuantiles) — Merge Quantiles sketches

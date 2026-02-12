@@ -78,6 +78,6 @@ FROM external_tdigest_data;
 
 ## See Also {#see-also}
 
-- [serializedTDigest](../../../sql-reference/aggregate-functions/reference/serializedtdigest) — Create TDigest sketch
+- [serializedTDigest](../../../sql-reference/aggregate-functions/reference/serializedTDigest) — Create TDigest sketch
 - [percentileFromTDigest](../../../sql-reference/functions/percentilefromtdigest) — Extract percentile from TDigest
-- [mergeSerializedQuantiles](../../../sql-reference/aggregate-functions/reference/mergeserializedquantiles) — Similar pattern for Quantiles sketches
+- [mergeSerializedQuantiles](../../../sql-reference/aggregate-functions/reference/mergeSerializedQuantiles) — Similar pattern for Quantiles sketches

@@ -7,7 +7,7 @@ doc_type: 'reference'
 
 # mergeSerializedHLL
 
-Merges multiple serialized Apache DataSketches HyperLogLog (HLL) sketches that were created by [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedhll) into a single unified sketch. This enables distributed cardinality estimation where sketches are computed on different nodes or time periods and then merged together.
+Merges multiple serialized Apache DataSketches HyperLogLog (HLL) sketches that were created by [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedHLL) into a single unified sketch. This enables distributed cardinality estimation where sketches are computed on different nodes or time periods and then merged together.
 
 ## Syntax {#syntax}
 
@@ -37,13 +37,13 @@ mergeSerializedHLL([base64_encoded, lg_k, type])(sketch_column)
     - `lg_k` when the value is in `[4..21]`
   - If the 3-parameter form is still ambiguous (e.g. both the 2nd and 3rd parameters are numeric), the function throws an error.
 
-- `base64_encoded` — Boolean flag to control base64 decoding. Type: [Bool](../../../sql-reference/data-types/bool). Default: 0 (false).
+- `base64_encoded` — Boolean flag to control base64 decoding. Type: [Bool](../../../sql-reference/data-types/boolean). Default: 0 (false).
   - `0` (false, default): Input is raw binary data, no decoding needed (recommended for ClickHouse-generated sketches)
   - `1` (true): Input is base64-encoded and will be decoded before merging (for external data sources)
 
-- `lg_k` — Log-base-2 of buckets (should match the value used in [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedhll)). Type: [UInt8](../../../sql-reference/data-types/int-uint). Valid range: 4-21. Default: 10.
+- `lg_k` — Log-base-2 of buckets (should match the value used in [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedHLL)). Type: [UInt8](../../../sql-reference/data-types/int-uint). Valid range: 4-21. Default: 10.
 
-- `type` — Storage format (should match the value used in [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedhll)). Type: [String](../../../sql-reference/data-types/string). Valid values: 'HLL_4', 'HLL_6', 'HLL_8'. Default: 'HLL_4'.
+- `type` — Storage format (should match the value used in [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedHLL)). Type: [String](../../../sql-reference/data-types/string). Valid values: 'HLL_4', 'HLL_6', 'HLL_8'. Default: 'HLL_4'.
 
 ## Returned Value {#returned-value}
 
@@ -182,6 +182,6 @@ SELECT cardinalityFromHLL(m) AS total_cardinality FROM merged;
 
 ## See Also {#see-also}
 
-- [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedhll) — Create HLL sketches
-- [cardinalityFromHLL](../../../sql-reference/functions/cardinalityfromhll) — Extract cardinality from merged sketch
+- [serializedHLL](../../../sql-reference/aggregate-functions/reference/serializedHLL) — Create HLL sketches
+- [cardinalityFromHLL](../../../sql-reference/functions/cardinalityFromHLL) — Extract cardinality from merged sketch
 - [uniq](../../../sql-reference/aggregate-functions/reference/uniq) — Native approximate distinct count

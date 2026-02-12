@@ -7,7 +7,7 @@ doc_type: 'reference'
 
 # cardinalityFromHLL
 
-Extracts the approximate cardinality (number of distinct elements) from a serialized HyperLogLog (HLL) sketch created by [serializedHLL](../../sql-reference/aggregate-functions/reference/serializedhll) or [mergeSerializedHLL](../../sql-reference/aggregate-functions/reference/mergeserializedhll).
+Extracts the approximate cardinality (number of distinct elements) from a serialized HyperLogLog (HLL) sketch created by [serializedHLL](../../sql-reference/aggregate-functions/reference/serializedHLL) or [mergeSerializedHLL](../../sql-reference/aggregate-functions/reference/mergeSerializedHLL).
 
 ## Syntax
 
@@ -141,6 +141,6 @@ FROM data;
 
 ## See Also
 
-- [serializedHLL](../../sql-reference/aggregate-functions/reference/serializedhll) — Create HLL sketches
-- [mergeSerializedHLL](../../sql-reference/aggregate-functions/reference/mergeserializedhll) — Merge HLL sketches
+- [serializedHLL](../../sql-reference/aggregate-functions/reference/serializedHLL) — Create HLL sketches
+- [mergeSerializedHLL](../../sql-reference/aggregate-functions/reference/mergeSerializedHLL) — Merge HLL sketches
 - [uniq](../../sql-reference/aggregate-functions/reference/uniq) — Direct distinct count estimation

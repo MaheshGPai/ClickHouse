@@ -118,7 +118,7 @@ SELECT
 
 ## See Also {#see-also}
 
-- [mergeSerializedQuantiles](../../../sql-reference/aggregate-functions/reference/mergeserializedquantiles) — Merge multiple quantiles sketches
+- [mergeSerializedQuantiles](../../../sql-reference/aggregate-functions/reference/mergeSerializedQuantiles) — Merge multiple quantiles sketches
 - [percentileFromQuantiles](../../../sql-reference/functions/percentilefromquantiles) — Extract percentile from sketch
 - [quantile](../../../sql-reference/aggregate-functions/reference/quantile) — Native ClickHouse percentile function
 - [quantileTDigest](../../../sql-reference/aggregate-functions/reference/quantiletdigest) — Alternative percentile algorithm
