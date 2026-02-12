@@ -45,10 +45,10 @@ public:
         {
             return centroids;
         }
-        tdigest->compress();
-        for (const auto& centroid : tdigest->get_centroids())
+        for (datasketches::tdigest<double>::const_iterator it = tdigest->begin(); it != tdigest->end(); ++it)
         {
-            centroids[centroid.get_mean()] = centroid.get_weight();
+            const auto & [mean, weight] = *it;
+            centroids[mean] = weight;
         }
         return centroids;
     }
@@ -63,11 +63,9 @@ public:
         WriteBufferFromOwnString buf;
         writeChar('{', buf);
         bool first = true;
-        tdigest->compress();
-        for (const auto& centroid : tdigest->get_centroids())
+        for (datasketches::tdigest<double>::const_iterator it = tdigest->begin(); it != tdigest->end(); ++it)
         {
-            double mean = centroid.get_mean();
-            UInt64 weight = static_cast<UInt64>(centroid.get_weight());
+            const auto & [mean, weight] = *it;
             if (!first)
             {
                 writeChar(',', buf);
