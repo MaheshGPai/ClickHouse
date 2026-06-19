@@ -39,5 +39,6 @@
 // Now include other datasketches headers (these use SYSTEM includes and don't need pragmas)
 #include <hll.hpp>
 #include <quantiles_sketch.hpp>
+#include <kll_sketch.hpp>
 
 #endif

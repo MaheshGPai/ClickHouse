@@ -12,6 +12,7 @@ target_include_directories(_datasketches SYSTEM BEFORE INTERFACE
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/count/include"
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/tdigest/include"
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/hll/include"
+    "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/kll/include"
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/quantiles/include"
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/fi/include"
     "${ClickHouse_SOURCE_DIR}/contrib/datasketches-cpp/theta/include")

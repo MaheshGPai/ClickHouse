@@ -126,6 +126,8 @@ void registerAggregateFunctionMergeSerializedDoubleSketch(AggregateFunctionFacto
 void registerAggregateFunctionSerializedItemSketch(AggregateFunctionFactory & factory);
 void registerAggregateFunctionMergeSerializedItemSketch(AggregateFunctionFactory & factory);
 void registerAggregateFunctionLatencyValuesAndWeights(AggregateFunctionFactory & factory);
+void registerAggregateFunctionSerializedKLL(AggregateFunctionFactory & factory);
+void registerAggregateFunctionMergeSerializedKLL(AggregateFunctionFactory & factory);
 #endif
 
 void registerAggregateFunctions()
@@ -232,6 +234,8 @@ void registerAggregateFunctions()
         registerAggregateFunctionSerializedItemSketch(factory);
         registerAggregateFunctionMergeSerializedItemSketch(factory);
         registerAggregateFunctionLatencyValuesAndWeights(factory);
+        registerAggregateFunctionSerializedKLL(factory);
+        registerAggregateFunctionMergeSerializedKLL(factory);
 #endif
 
         registerWindowFunctions(factory);
